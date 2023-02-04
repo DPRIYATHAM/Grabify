@@ -9,6 +9,7 @@ class item(models.Model):
     image_link = models.CharField(max_length=1000)
     item_price = models.CharField(max_length=1000)
     item_desc = models.CharField(max_length=1000)
+    item_count=models.CharField(max_length=1000, default='0')
 
 #Manually create a table in the database
 #python manage.py shell

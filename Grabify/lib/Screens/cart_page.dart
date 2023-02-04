@@ -2,6 +2,7 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:grabify/Components/cart_item_tile.dart';
 import 'package:grabify/Models/cart_model.dart';
 import 'package:provider/provider.dart';
 // import 'package:flutter/src/widgets/container.dart';
@@ -54,43 +55,28 @@ class _CartPageState extends State<CartPage> {
                     itemCount: value.cartItems.length,
                     padding: EdgeInsets.all(12),
                     itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Color.fromRGBO(255, 119, 0, 1),
-                              borderRadius: BorderRadius.circular(8)),
-                          child: ListTile(
-                            leading: Container(
-                              child: CachedNetworkImage(
-                                imageUrl: value.cartItems[index]['image_link'],
-                                height: 80,
-                                width: 67.5,
-                              ),
-                            ),
-                            title: Text(
-                              value.cartItems[index]['item_name'] +
-                                  ' ' +
-                                  value.cartItems[index]['item_desc'],
-                              style: const TextStyle(
-                                  fontSize: 18, color: Colors.white),
-                            ),
-                            subtitle: Text(
-                              "₹" + value.cartItems[index]['item_price'],
-                              style: const TextStyle(
-                                  fontSize: 12, color: Colors.white),
-                            ),
-                            trailing: IconButton(
-                              icon: const Icon(
-                                Icons.delete,
-                                color: Colors.white,
-                              ),
-                              onPressed: () =>
-                                  Provider.of<Cartmodel>(context, listen: false)
-                                      .removeFromCart(index),
-                            ),
-                          ),
-                        ),
+                      return CartItemTile(
+                        itemName:
+                            value.cartItems[index]['item_name'].toString(),
+                        itemImagePath: value.cartItems[index]['image_link'],
+                        itemPrice:
+                            value.cartItems[index]['item_price'].toString(),
+                        itemDescription:
+                            value.cartItems[index]['item_desc'].toString(),
+                        itemQuantity:
+                            value.cartItems[index]['item_count'].toString(),
+                        onPressed: () {
+                          Provider.of<Cartmodel>(context, listen: false)
+                              .addSingleItemToCart(index);
+                        },
+                        onPressed1: () {
+                          Provider.of<Cartmodel>(context, listen: false)
+                              .removeSingleItemFromCart(index);
+                        },
+                        onPressed2: () {
+                          Provider.of<Cartmodel>(context, listen: false)
+                              .removeFromCart(index);
+                        },
                       );
                     },
                   ),

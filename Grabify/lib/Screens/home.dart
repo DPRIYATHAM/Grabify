@@ -9,9 +9,13 @@ import 'package:get_storage/get_storage.dart';
 import 'package:grabify/Components/iconasset.dart';
 import 'package:grabify/Models/cart_model.dart';
 import 'package:grabify/Screens/cart_page.dart';
+import 'package:grabify/Screens/favorite_page.dart';
+import 'package:grabify/Screens/nonveg.dart';
+import 'package:grabify/Screens/priceless.dart';
+import 'package:grabify/Screens/pricemore.dart';
+import 'package:grabify/Screens/veg.dart';
 import 'package:grabify/Screens/welcome.dart';
 import 'package:provider/provider.dart';
-
 import '../Components/home_item_tile.dart';
 
 class MyHome extends StatefulWidget {
@@ -113,7 +117,29 @@ class _MyHomeState extends State<MyHome> {
                               PopupMenuButton(
                                 itemBuilder: (context) => [
                                   PopupMenuItem(
-                                    child: TextButton(
+                                    child: MaterialButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const LikedPage(),
+                                          ),
+                                        );
+                                      },
+                                      child: Text(
+                                        'Liked',
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 20,
+                                          fontFamily: 'Inter',
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  PopupMenuItem(
+                                    child: MaterialButton(
                                       onPressed: () {
                                         userdata.write('isLoggedIn', false);
                                         userdata.remove('name');
@@ -144,8 +170,8 @@ class _MyHomeState extends State<MyHome> {
                                 ],
                                 child: CircleAvatar(
                                   radius: 20,
-                                  backgroundImage:
-                                      AssetImage('assets/images/flutter.png'),
+                                  backgroundImage: AssetImage(
+                                      'assets/images/Grabify_Logo_final.png'),
                                 ),
                               ),
                               SizedBox(
@@ -155,7 +181,130 @@ class _MyHomeState extends State<MyHome> {
                           ),
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.07,
+                          height: MediaQuery.of(context).size.height * 0.01,
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          child: Row(children: <Widget>[
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.07,
+                            ),
+                            SizedBox(
+                              height: 30,
+                              child: OutlinedButton(
+                                onPressed: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const vegpage(),
+                                  ),
+                                ),
+                                style: OutlinedButton.styleFrom(
+                                  side: BorderSide(
+                                      color: Color.fromARGB(255, 224, 75, 1),
+                                      width: 4),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(14.0)),
+                                ),
+                                child: const Text(
+                                  'veg',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.02,
+                            ),
+                            SizedBox(
+                              height: 30,
+                              child: OutlinedButton(
+                                onPressed: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const nonvegpage(),
+                                  ),
+                                ),
+                                style: OutlinedButton.styleFrom(
+                                  side: BorderSide(
+                                      color: Color.fromARGB(255, 224, 75, 1),
+                                      width: 4),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(14.0)),
+                                ),
+                                child: const Text(
+                                  'Non veg',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.02,
+                            ),
+                            SizedBox(
+                              height: 30,
+                              child: OutlinedButton(
+                                  onPressed: () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => const priceup(),
+                                        ),
+                                      ),
+                                  style: OutlinedButton.styleFrom(
+                                    side: BorderSide(
+                                        color: Color.fromARGB(255, 224, 75, 1),
+                                        width: 4),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(14.0)),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        "Price",
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                      Icon(Icons.arrow_upward,
+                                          color: Colors.white)
+                                    ],
+                                  )),
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.02,
+                            ),
+                            SizedBox(
+                              height: 30,
+                              child: OutlinedButton(
+                                  onPressed: () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const pricedown(),
+                                        ),
+                                      ),
+                                  style: OutlinedButton.styleFrom(
+                                    side: BorderSide(
+                                        color: Color.fromARGB(255, 224, 75, 1),
+                                        width: 4),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(14.0)),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        "Price",
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                      Icon(Icons.arrow_downward,
+                                          color: Colors.white)
+                                    ],
+                                  )),
+                            ),
+                          ]),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.02,
                         ),
                         Expanded(
                           child: FutureBuilder<List>(
@@ -185,9 +334,25 @@ class _MyHomeState extends State<MyHome> {
                                           Provider.of<Cartmodel>(context,
                                                   listen: false)
                                               .addItemToCart(snapshot
-                                                  .data![index]['item_id']);
+                                                  .data![index]['item_name']);
                                           Fluttertoast.showToast(
                                             msg: 'Item added to cart',
+                                            toastLength: Toast.LENGTH_SHORT,
+                                            gravity: ToastGravity.BOTTOM,
+                                            timeInSecForIosWeb: 1,
+                                            backgroundColor:
+                                                Color.fromRGBO(224, 77, 1, 1),
+                                            textColor: Colors.white,
+                                            fontSize: 16.0,
+                                          );
+                                        },
+                                        onPressedLike: () {
+                                          Provider.of<Cartmodel>(context,
+                                                  listen: false)
+                                              .addLikedItem(snapshot
+                                                  .data![index]['item_name']);
+                                          Fluttertoast.showToast(
+                                            msg: 'Item added to Liked Items',
                                             toastLength: Toast.LENGTH_SHORT,
                                             gravity: ToastGravity.BOTTOM,
                                             timeInSecForIosWeb: 1,
@@ -202,7 +367,10 @@ class _MyHomeState extends State<MyHome> {
                               } else {
                                 return const Center(
                                   child: Text(
-                                      'No data Found Please wait for some time'),
+                                    'Loading...',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 30),
+                                  ),
                                 );
                               }
                             },

@@ -1,24 +1,24 @@
-// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, sized_box_for_whitespace
+// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, sized_box_for_whitespace, must_be_immutable
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-class HomeItemTile extends StatelessWidget {
+class LikedItemTile extends StatelessWidget {
   final String itemName;
   final String itemImagePath;
   final String itemPrice;
   final String itemDescription;
   void Function()? onPressed;
-  void Function()? onPressedLike;
+  void Function()? onPressedLiked1;
 
-  HomeItemTile({
+  LikedItemTile({
     super.key,
     required this.itemName,
     required this.itemImagePath,
     required this.itemPrice,
     required this.itemDescription,
     required this.onPressed,
-    required this.onPressedLike,
+    required this.onPressedLiked1,
   });
 
   @override
@@ -144,13 +144,13 @@ class HomeItemTile extends StatelessWidget {
                 ),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.007),
                 GestureDetector(
-                  onTap: onPressedLike,
+                  onTap: onPressedLiked1,
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.07,
                     child: Center(
                       child: Icon(
                         Icons.favorite,
-                        color: Colors.white,
+                        color: Color.fromRGBO(224, 77, 1, 1),
                       ),
                     ),
                   ),
