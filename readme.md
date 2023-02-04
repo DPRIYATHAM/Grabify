@@ -1,6 +1,6 @@
 # Backend Documentation
 
-Create a folder `GRABIFY1.0` in your local machine.
+Create a folder `GRABIFY1.00` in your local machine.
 Open that folder in VS Code, and start working.
 
 ###### Install Django
