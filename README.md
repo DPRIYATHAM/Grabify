@@ -157,6 +157,4 @@ REST_FRAMEWORK = {
 ```
 Hurray, You are all set now, you will get the pure JSON formatted file of the requested queries.
 
-
->GrabifyAdmin
->Admin_Things
+> The Complete Documentation of this will be updated soon, thanks for looking into this project.
