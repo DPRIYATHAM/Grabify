@@ -3,9 +3,9 @@
 Aim : Is to connect all the shops in an area through an application to the Digital market
 
 Technologies :   
-	1. Flutter (Frontend)
-	2. Django ( Python based framework for API )
-	3. Sqlite3 ( Database Management )
+	1. Flutter (Frontend) <br>
+	2. Django ( Python based framework for API, Backend ) <br>
+	3. Sqlite3 ( Database Management ) <br>
 
 Project Link: https://github.com/DPRIYATHAM/Grabify/tree/Grabify1.1
 
